@@ -13,6 +13,7 @@ contract MyTokenSale is MintedCrowdsale {
         IERC20 token,
         KycContract _kyc
     )
+        MintedCrowdsale()
         Crowdsale(rate, wallet, token)
         public
     {
