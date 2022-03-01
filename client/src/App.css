@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wdth,wght@100,400;100,700;125,400&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Encode Sans', sans-serif;
 }
 
 .App-logo {
@@ -19,4 +22,38 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.main-box {
+  max-width: 1000px;
+}
+
+.subheader-line {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.subheader-line:before,
+.subheader-line:after {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: #48c78e;
+  flex-grow: 1;
+  align-self: center;
+}
+
+.subheader-line h2 {
+  font-weight: bold;
+  color: #48c78e;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.text-wide {
+  font-variation-settings: 'wdth' 125;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }

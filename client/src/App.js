@@ -1,15 +1,28 @@
-import React, { Component } from "react";
-import MyToken from "./contracts/MyToken.json";
-import MyTokenSale from "./contracts/MyTokenSale.json";
-import KycContract from "./contracts/KycContract.json";
-import getWeb3 from "./getWeb3";
+import React, { Component } from 'react';
+import 'bulma/css/bulma.min.css';
+import MyToken from './contracts/MyToken.json';
+import MyTokenSale from './contracts/MyTokenSale.json';
+import KycContract from './contracts/KycContract.json';
+import {
+  Box,
+  Button,
+  Columns,
+  Container,
+  Form,
+  Heading,
+  Block,
+  Image,
+} from 'react-bulma-components';
+import getWeb3 from './getWeb3';
+import Icon from '@mdi/react';
+import { mdiCircleMultiple, mdiPlus } from '@mdi/js';
 
-import "./App.css";
+import './App.css';
 
 class App extends Component {
   state = {
     loaded: false,
-    kycAddress: "0x123...",
+    kycAddress: '',
     tokenSaleAddress: null,
     userTokens: 0,
     totalSupply: 0,
@@ -75,19 +88,19 @@ class App extends Component {
   listenToTokenTransfer = () => {
     this.tokenInstance.events
       .Transfer({ to: this.accounts[0] })
-      .on("data", this.updateUserTokens);
+      .on('data', this.updateUserTokens);
   };
 
   handleBuyTokens = async () => {
     await this.tokenSaleInstance.methods.buyTokens(this.accounts[0]).send({
       from: this.accounts[0],
-      value: this.web3.utils.toWei("1", "wei"),
+      value: this.web3.utils.toWei('1', 'wei'),
     });
   };
 
   handleInputChange = (event) => {
     const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
     this.setState({
       [name]: value,
@@ -98,7 +111,7 @@ class App extends Component {
     await this.kycInstance.methods
       .setKycCompleted(this.state.kycAddress)
       .send({ from: this.accounts[0] });
-    alert("KYC for " + this.state.kycAddress + " is completed");
+    alert('KYC for ' + this.state.kycAddress + ' is completed');
   };
 
   getTotalSupply = async () => {
@@ -108,35 +121,113 @@ class App extends Component {
 
   render() {
     if (!this.state.loaded) {
-      return <div>Loading Web3, accounts, and contract...</div>;
+      return (
+        <Container textAlign='center'>
+          <div className='m-4'>
+            <Image
+              display='inline-block'
+              rounded
+              size={64}
+              src='img/metamask.svg'
+            />
+            <Heading>Connecting with Metamask...</Heading>
+            <p>Make sure to select Ropsten Test Network</p>
+          </div>
+        </Container>
+      );
     }
     return (
-      <div className="App">
-        <h1>StarDucks Cappucino Token Sale</h1>
-        <p>Get your Tokens today!</p>
-        <h2>Kyc Whitelisting</h2>
-        Address to allow:{" "}
-        <input
-          type="text"
-          name="kycAddress"
-          value={this.state.kycAddress}
-          onChange={this.handleInputChange}
-        />
-        <button type="button" onClick={this.handleKycWhitelisting}>
-          Add to Whitelist
-        </button>
-        <h2>Buy Tokens</h2>
-        <p>
-          If you want to buy tokens, send Wei to this address:{" "}
-          {this.state.tokenSaleAddress}
-        </p>
-        <p>You currently have: {this.state.userTokens} CAPPU Tokens</p>
-        <button type="button" onClick={this.handleBuyTokens}>
-          Buy more tokens
-        </button>
-        <br />
-        <h2>Total token supply: {this.state.totalSupply}</h2>
-      </div>
+      <Container>
+        <div className='App m-4 has-text-centered'>
+          <Box display='inline-block' className='main-box'>
+            <Heading
+              textColor='success'
+              subtitle
+              className='text-wide uppercase'
+            >
+              Total token supply: <b>{this.state.totalSupply}</b>
+            </Heading>
+            <Block textAlign='center'>
+              <Image
+                display='inline-block'
+                rounded
+                size={64}
+                src='img/onion.svg'
+              />
+            </Block>
+            <Heading marginless>GoldenOnion Mintable Token Sale</Heading>
+            <p className='is-size-4 mb-4'>Get your Onion today!</p>
+            <Columns breakpoint='tablet'>
+              <Columns.Column>
+                <div className='subheader-line'>
+                  <h2>KYC Whitelisting</h2>
+                </div>
+                <p className='mb-6'>
+                  In order to any account to mint <b>ONION</b>, it must be
+                  whitelisted beforehand.
+                </p>
+                <Form.Field align='center' kind='group'>
+                  <Form.Control fullwidth>
+                    <Form.Input
+                      name='kycAddress'
+                      value={this.state.kycAddress}
+                      onChange={this.handleInputChange}
+                      placeholder='Address to allow'
+                      type='text'
+                    ></Form.Input>
+                  </Form.Control>
+                  <Form.Control>
+                    <Button
+                      color='success'
+                      onClick={this.handleKycWhitelisting}
+                    >
+                      <Icon path={mdiPlus} size={1}></Icon>&nbsp;Add to
+                      Whitelist
+                    </Button>
+                  </Form.Control>
+                </Form.Field>
+              </Columns.Column>
+              <Columns.Column>
+                <div className='subheader-line'>
+                  <h2>Buy Tokens</h2>
+                </div>
+                <p className='is-size-4'>You currently have </p>
+                <span className='is-size-2 has-text-success has-text-weight-bold'>
+                  {this.state.userTokens}
+                </span>
+                <p className='is-size-4'>
+                  <b>ONION</b> Tokens
+                </p>
+                <p className='has-text-grey'>
+                  If you want to buy tokens, send Wei to this address:
+                  <br />
+                  <b>{this.state.tokenSaleAddress}</b>
+                </p>
+                <h4 className='is-size-4 my-4'>OR</h4>
+                <Button color='success' onClick={this.handleBuyTokens}>
+                  <Icon path={mdiCircleMultiple} size={1}></Icon>&nbsp; Buy more
+                  tokens
+                </Button>
+              </Columns.Column>
+            </Columns>
+          </Box>
+          <p>Educational dApp deployed in Test Network.</p>
+          <p>
+            Modified by{' '}
+            <a href='https://github.com/leandrososa' target='_blank'>
+              leandrososa
+            </a>
+            . Original assignment for the{' '}
+            <a
+              href='https://www.udemy.com/course/blockchain-developer/'
+              target='_blank'
+            >
+              Ethereum Solidity Developer Bootcamp
+            </a>
+            .
+          </p>
+        </div>
+      </Container>
     );
   }
 }

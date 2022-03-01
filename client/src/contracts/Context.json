@@ -13,7 +13,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.6.0;\n\n/*\n * @dev Provides information about the current execution context, including the\n * sender of the transaction and its data. While these are generally available\n * via msg.sender and msg.data, they should not be accessed in such a direct\n * manner, since when dealing with GSN meta-transactions the account sending and\n * paying for execution may not be the actual sender (as far as an application\n * is concerned).\n *\n * This contract is only required for intermediate, library-like contracts.\n */\ncontract Context {\n    // Empty internal constructor, to prevent people from mistakenly deploying\n    // an instance of this contract, which should be used via inheritance.\n    constructor () internal { }\n\n    function _msgSender() internal view virtual returns (address payable) {\n        return msg.sender;\n    }\n\n    function _msgData() internal view virtual returns (bytes memory) {\n        this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691\n        return msg.data;\n    }\n}\n",
-  "sourcePath": "@openzeppelin/contracts/GSN/Context.sol",
+  "sourcePath": "@openzeppelin\\contracts\\GSN\\Context.sol",
   "ast": {
     "absolutePath": "@openzeppelin/contracts/GSN/Context.sol",
     "exportedSymbols": {
@@ -97,7 +97,7 @@
                       "name": "msg",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1961,
+                      "referencedDeclaration": 1963,
                       "src": "822:3:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_magic_message",
@@ -193,7 +193,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1975,
+                    "referencedDeclaration": 1977,
                     "src": "920:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$26",
@@ -213,7 +213,7 @@
                       "name": "msg",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1961,
+                      "referencedDeclaration": 1963,
                       "src": "1060:3:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_magic_message",
@@ -487,7 +487,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1961,
+                              "referencedDeclaration": 1963,
                               "type": "msg",
                               "value": "msg"
                             },
@@ -587,7 +587,7 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 1975,
+                          "referencedDeclaration": 1977,
                           "type": "contract Context",
                           "value": "this"
                         },
@@ -623,7 +623,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1961,
+                              "referencedDeclaration": 1963,
                               "type": "msg",
                               "value": "msg"
                             },
@@ -667,7 +667,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-02T23:41:22.129Z",
+  "updatedAt": "2022-03-01T04:47:46.218Z",
   "devdoc": {
     "methods": {}
   },
