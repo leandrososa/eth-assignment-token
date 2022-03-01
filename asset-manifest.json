@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/eth-assignment-token/static/css/main.71f45434.chunk.css",
+    "main.js": "/eth-assignment-token/static/js/main.bc28dea9.chunk.js",
+    "main.js.map": "/eth-assignment-token/static/js/main.bc28dea9.chunk.js.map",
+    "runtime-main.js": "/eth-assignment-token/static/js/runtime-main.478f4ae2.js",
+    "runtime-main.js.map": "/eth-assignment-token/static/js/runtime-main.478f4ae2.js.map",
+    "static/css/2.a4e2f9ad.chunk.css": "/eth-assignment-token/static/css/2.a4e2f9ad.chunk.css",
+    "static/js/2.b928642f.chunk.js": "/eth-assignment-token/static/js/2.b928642f.chunk.js",
+    "static/js/2.b928642f.chunk.js.map": "/eth-assignment-token/static/js/2.b928642f.chunk.js.map",
+    "index.html": "/eth-assignment-token/index.html",
+    "precache-manifest.5b446de53e0aac966f074f1a712a8f91.js": "/eth-assignment-token/precache-manifest.5b446de53e0aac966f074f1a712a8f91.js",
+    "service-worker.js": "/eth-assignment-token/service-worker.js",
+    "static/css/2.a4e2f9ad.chunk.css.map": "/eth-assignment-token/static/css/2.a4e2f9ad.chunk.css.map",
+    "static/css/main.71f45434.chunk.css.map": "/eth-assignment-token/static/css/main.71f45434.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.478f4ae2.js",
+    "static/css/2.a4e2f9ad.chunk.css",
+    "static/js/2.b928642f.chunk.js",
+    "static/css/main.71f45434.chunk.css",
+    "static/js/main.bc28dea9.chunk.js"
+  ]
+}
